@@ -8,8 +8,10 @@ interface FiltersPanelProps {
     category: string;
     setCategory: (v: string) => void;
     categories: string[];
-    sort: string;
-    setSort: (v: string) => void;
+    sort: "none" | "asc" | "desc";
+    setSort: React.Dispatch<
+        React.SetStateAction<"none" | "asc" | "desc">
+    >;
     showFavorites: boolean;
     setShowFavorites: (v: boolean) => void;
 }
@@ -54,7 +56,7 @@ export default function FiltersPanel({
                     <div className="md:col-span-2 relative">
                         <select
                             value={sort}
-                            onChange={(e) => setSort(e.target.value)}
+                            onChange={(e) => setSort(e.target.value as "none" | "asc" | "desc")}
                             className="
                             w-full h-11
                             appearance-none
